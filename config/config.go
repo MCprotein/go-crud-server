@@ -11,7 +11,7 @@ import (
 
 type Config struct {
 	Server struct {
-		Port int64
+		Port string
 	}
 }
 
