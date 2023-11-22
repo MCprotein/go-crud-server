@@ -1,19 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"flag"
+
+	"github.com/MCprotein/crud-server/init/cmd"
 )
 
+var configPathFlag = flag.String("config", "./config.toml", "config file not found")
+
 func main() {
-	http.HandleFunc("/", helloWorld)
+	flag.Parse()
 
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		fmt.Println("에러")
-		panic(err)
-	}
-}
-
-func helloWorld(http.ResponseWriter, *http.Request) {
-	fmt.Println("Hello World")
+	cmd.NewCmd(*configPathFlag)
 }
